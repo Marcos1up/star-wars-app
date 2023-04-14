@@ -1,10 +1,10 @@
 const helmet = require("helmet");
-const Films = require("../../models/Films");
+const { findFilmById } = require("../../utilities/readFunctions/findFilmById");
 
 async function getFilmsById(req, res) {
     try {
         const filmId = req.params.id;
-        const film = await Films.findById(filmId);
+        const film = await findFilmById(filmId);
 
         if (!film) {
             return res.status(404).send({
