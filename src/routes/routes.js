@@ -3,8 +3,11 @@ const router = Router();
 const helmet = require("helmet");
 
 const { getAllFilms } = require("../controllers/get/getAllFilmsController");
+const { getFilmsById } = require("../controllers/get/getFilmByIdController");
+const { postFilm } = require("../controllers/post/postFilmController");
+const { putFilmController } = require("../controllers/put/putFilmController");
 
-//protección contra vulnerabilidades de OWASP
+//protección contra vulnerabilidades de OWASP >:(
 router.use(
     helmet({
         contentSecurityPolicy: {
@@ -21,10 +24,13 @@ router.use(
 
 //rutas GET
 router.get("/films", getAllFilms);
+router.get("/films/:id", getFilmsById);
 
 //rutas POST
+router.post("/films", postFilm);
 
 //rutas PUT
+router.put("/films/:id", putFilmController);
 
 //rutas DELETE
 
