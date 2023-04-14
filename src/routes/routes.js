@@ -4,6 +4,7 @@ const helmet = require("helmet");
 
 const { getAllFilms } = require("../controllers/get/getAllFilmsController");
 const { getFilmsById } = require("../controllers/get/getFilmByIdController");
+const { postFilm } = require("../controllers/post/postFilmController");
 
 //protección contra vulnerabilidades de OWASP >:(
 router.use(
@@ -25,7 +26,7 @@ router.get("/films", getAllFilms);
 router.get("/films/:id", getFilmsById);
 
 //rutas POST
-router.get("/films");
+router.post("/films", postFilm);
 
 //rutas PUT
 

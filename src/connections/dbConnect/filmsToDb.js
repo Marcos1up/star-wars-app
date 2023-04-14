@@ -23,6 +23,7 @@ async function filmsToDb() {
                         episode_id: e.episode_id,
                         opening_crawl: e.opening_crawl,
                         director: e.director,
+                        producer: e.producer,
                         release_date: e.release_date,
                     });
 

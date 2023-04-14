@@ -19,6 +19,10 @@ const FilmsSchema = new Schema(
             type: String,
             required: true,
         },
+        producer: {
+            type: String,
+            required: true,
+        },
         release_date: {
             type: Date,
             required: true,
