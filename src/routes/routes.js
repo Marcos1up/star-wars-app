@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 
-// rutas GET
+//rutas GET
 
 //rutas POST
 
