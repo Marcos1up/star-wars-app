@@ -28,7 +28,7 @@ const StarshipSchema = new Schema(
             required: true,
         },
         crew: {
-            type: Number, //ojo que hay que cambiarlo a numero
+            type: String,
             required: true,
         },
         passengers: {
@@ -61,3 +61,21 @@ const StarshipSchema = new Schema(
 
 const Starship = mongoose.model("Starship", StarshipSchema);
 module.exports = Starship;
+
+/*
+
+        "name": "CR90 corvette",
+        "model": "CR90 corvette",
+        "manufacturer": "Corellian Engineering Corporation",
+        "cost_in_credits": 3500000,
+        "length": 150,
+        "max_atmosphering_speed": 950,
+        "crew": "30-165",
+        "passengers": 600,
+        "cargo_capacity": 3000000,
+        "consumables": "1 year",
+        "hyperdrive_rating": 2.0,
+        "MGLT": 60,
+        "starship_class": "corvette",
+
+*/

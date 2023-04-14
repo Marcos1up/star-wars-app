@@ -1,11 +1,8 @@
-const axios = require("axios");
 const data = require("../jsonData/films.json");
 
 async function allFilmsData() {
     try {
-        const response = await axios.get(data);
-
-        let allFilms = response.map((e) => {
+        let allFilms = data.map((e) => {
             return {
                 title: e.title,
                 episode_id: e.episode_id,
@@ -16,13 +13,15 @@ async function allFilmsData() {
         });
 
         if (!allFilms.length) {
-            throw new Error("No se encontraron películas en la API.");
+            throw new Error(
+                "El archivo JSON está vacío o no contiene películas"
+            );
         }
 
         return allFilms;
     } catch (error) {
         console.error("Error al obtener las películas:", error.message);
-        throw new Error("No se pudieron obtener las películas.");
+        throw new Error("No se pudieron obtener las películas");
     }
 }
 
