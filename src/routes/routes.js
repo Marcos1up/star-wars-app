@@ -6,6 +6,9 @@ const { getAllFilms } = require("../controllers/get/getAllFilmsController");
 const { getFilmsById } = require("../controllers/get/getFilmByIdController");
 const { postFilm } = require("../controllers/post/postFilmController");
 const { putFilmController } = require("../controllers/put/putFilmController");
+const {
+    deleteFilmController,
+} = require("../controllers/delete/deleteFilmController");
 
 //protección contra vulnerabilidades de OWASP >:(
 router.use(
@@ -33,5 +36,6 @@ router.post("/films", postFilm);
 router.put("/films/:id", putFilmController);
 
 //rutas DELETE
+router.delete("/films/:id", deleteFilmController);
 
 module.exports = router;
