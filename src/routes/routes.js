@@ -48,6 +48,25 @@ router.use(
         },
     })
 );
+//documentacion de swagger (AY DIOS):
+/**
+ * @swagger
+ * /planets:
+ *   get:
+ *     summary: Obtiene todos los planetas
+ *     description: Retorna una lista con todos los planetas de Star Wars
+ *     tags:
+ *       - Planetas
+ *     responses:
+ *       '200':
+ *         description: Lista de planetas
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Planet'
+ */
 
 //rutas GET
 router.get("/films", getAllFilms);
