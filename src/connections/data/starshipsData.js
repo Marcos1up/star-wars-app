@@ -11,7 +11,7 @@ async function allStarshipsData() {
                 length: parseInt(e.length),
                 max_atmosphering_speed: parseInt(e.max_atmosphering_speed),
                 crew: e.crew,
-                passengers: parseInt(e.passengers),
+                passengers: e.passengers,
                 cargo_capacity: parseInt(e.cargo_capacity),
                 consumables: e.consumables,
                 hyperdrive_rating: parseInt(e.hyperdrive_rating),

@@ -20,6 +20,19 @@ const {
 const {
     deletePlanetController,
 } = require("../controllers/delete/deletePlanetController");
+const {
+    getAllStarships,
+} = require("../controllers/get/getAllStarshipsController");
+const {
+    getStarshipById,
+} = require("../controllers/get/getStarshipsByIdController");
+const {
+    deleteStarshipController,
+} = require("../controllers/delete/deleteStarshipController");
+const {
+    putStarshipController,
+} = require("../controllers/put/putStarshipController");
+const { postStarship } = require("../controllers/post/postStarshipController");
 
 //protección contra vulnerabilidades de OWASP >:(
 router.use(
@@ -43,28 +56,28 @@ router.get("/films/:id", getFilmsById);
 router.get("/planets", getAllPlanets);
 router.get("/planets/:id", getPlanetsById);
 
-router.get("/starships");
-router.get("/starships/:id");
+router.get("/starships", getAllStarships);
+router.get("/starships/:id", getStarshipById);
 
 //rutas POST
 router.post("/films", postFilm);
 
 router.post("/planets", postPlanet);
 
-router.post("/starships", postPlanet);
+router.post("/starships", postStarship);
 
 //rutas PUT
 router.put("/films/:id", putFilmController);
 
 router.put("/planets/:id", putPlanetController);
 
-router.put("/starships/:id");
+router.put("/starships/:id", putStarshipController);
 
 //rutas DELETE
 router.delete("/films/:id", deleteFilmController);
 
 router.delete("/planets/:id", deletePlanetController);
 
-router.delete("/starships/:id");
+router.delete("/starships/:id", deleteStarshipController);
 
 module.exports = router;
