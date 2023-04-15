@@ -3,7 +3,7 @@ const {
     removePlanet,
 } = require("../../utilities/removeFunctions/removePlanet");
 
-async function deletePlanetController(req, res) {
+async function deletePlanetController(req, res, next) {
     try {
         const planetId = req.params.id;
         const planet = await removePlanet(planetId);
@@ -21,7 +21,7 @@ async function deletePlanetController(req, res) {
         console.error(error.message, error);
         res.status(500).send({
             message:
-                "Ha ocurrido un error INESPERADO al remover el planeta de la base de datos. Verifique que la Id sea correcta",
+                "Ha ocurrido un error INESPERADO al remover el planeta de la base de datos. Por favor, inténtelo de nuevo",
         });
     }
 }

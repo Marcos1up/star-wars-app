@@ -1,7 +1,7 @@
 const { allFilms } = require("../../utilities/readFunctions/allFilms");
 const helmet = require("helmet");
 
-async function getAllFilms(req, res) {
+async function getAllFilms(req, res, next) {
     try {
         const allFilmsDb = await allFilms();
 
@@ -17,7 +17,7 @@ async function getAllFilms(req, res) {
         console.error({ message: error.message }, error);
         res.status(500).send({
             message:
-                "Ha ocurrido un error inesperado al obtener TODAS las películas",
+                "Ha ocurrido un error inesperado al obtener TODAS las películas. Por favor, inténtelo de nuevo más tarde",
         });
     }
 }

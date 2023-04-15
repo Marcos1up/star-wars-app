@@ -3,14 +3,14 @@ const {
     findPlanetById,
 } = require("../../utilities/readFunctions/findPlanetById");
 
-async function getPlanetsById(req, res) {
+async function getPlanetsById(req, res, next) {
     try {
         const planetId = req.params.id;
         const planet = await findPlanetById(planetId);
 
         if (!planet) {
             return res.status(404).send({
-                message: `No se encontró planeta con la id: ${planetId}. Verifique posibles problemas con la base de datos`,
+                message: `No se encontró planeta con la id: ${planetId}. Verifique que el Id proporcionado sea válido`,
             });
         }
 
@@ -18,7 +18,8 @@ async function getPlanetsById(req, res) {
     } catch (error) {
         console.error(error.message, error);
         res.status(500).send({
-            message: "Ha ocurrido un error INESPERADO al obtener el planeta",
+            message:
+                "Ha ocurrido un error INESPERADO al obtener el planeta. Por favor, inténtelo de nuevo más tarde",
         });
     }
 }

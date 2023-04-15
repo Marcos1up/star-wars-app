@@ -1,7 +1,7 @@
 const helmet = require("helmet");
 const { removeFilm } = require("../../utilities/removeFunctions/removeFilm");
 
-async function deleteFilmController(req, res) {
+async function deleteFilmController(req, res, next) {
     try {
         const filmId = req.params.id;
         const film = await removeFilm(filmId);
@@ -19,7 +19,7 @@ async function deleteFilmController(req, res) {
         console.error(error.message, error);
         res.status(500).send({
             message:
-                "Ha ocurrido un error inesperado al remover la pelicula de la base de datos. Verifique que la Id sea correcta",
+                "Ha ocurrido un error inesperado al remover la pelicula de la base de datos. Por favor, inténtelo de nuevo",
         });
     }
 }

@@ -3,7 +3,7 @@ const {
     updatePlanet,
 } = require("../../utilities/updateFunctions/updatePlanet");
 
-async function putPlanetController(req, res) {
+async function putPlanetController(req, res, next) {
     try {
         const idPlanet = req.params.id;
         const body = req.body;
@@ -12,7 +12,7 @@ async function putPlanetController(req, res) {
 
         if (updateResult.length === 0) {
             return res.status(404).send({
-                message: "No se encontró el planeta a actualizar",
+                message: `No se encontró el planeta a actualizar con el Id: ${idPlanet}`,
             });
         }
 
@@ -22,7 +22,8 @@ async function putPlanetController(req, res) {
     } catch (error) {
         console.error(error);
         return res.status(500).send({
-            message: "Ha ocurrido un error INESPERADO al actualizar el planeta",
+            message:
+                "Ha ocurrido un error INESPERADO al actualizar el planeta. Por favor, inténtelo de nuevo",
         });
     }
 }

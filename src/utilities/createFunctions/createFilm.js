@@ -20,12 +20,7 @@ async function createFilm(data) {
         }
 
         const newFilm = new Films({
-            title: data.title,
-            episode_id: data.episode_id,
-            opening_crawl: data.opening_crawl,
-            director: data.director,
-            producer: data.producer,
-            release_date: data.release_date,
+            ...data, //creo todos los valores ya validados
         });
 
         const savedFilm = await newFilm.save();
