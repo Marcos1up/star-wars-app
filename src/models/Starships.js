@@ -24,7 +24,7 @@ const StarshipSchema = new Schema(
             required: true,
         },
         max_atmosphering_speed: {
-            type: Number, //ojo que hay que cambiarlo a numero
+            type: String,
             required: true,
         },
         crew: {
@@ -32,7 +32,7 @@ const StarshipSchema = new Schema(
             required: true,
         },
         passengers: {
-            type: Number, //ojo que hay que cambiarlo a numero
+            type: String,
             required: true,
         },
         cargo_capacity: {
