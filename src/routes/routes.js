@@ -13,6 +13,13 @@ const { getAllPlanets } = require("../controllers/get/getAllPlanetsController");
 const {
     getPlanetsById,
 } = require("../controllers/get/getPlanetsByIdController");
+const { postPlanet } = require("../controllers/post/postPlanetController");
+const {
+    putPlanetController,
+} = require("../controllers/put/putPlanetController");
+const {
+    deletePlanetController,
+} = require("../controllers/delete/deletePlanetController");
 
 //protección contra vulnerabilidades de OWASP >:(
 router.use(
@@ -42,10 +49,22 @@ router.get("/starships/:id");
 //rutas POST
 router.post("/films", postFilm);
 
+router.post("/planets", postPlanet);
+
+router.post("/starships", postPlanet);
+
 //rutas PUT
 router.put("/films/:id", putFilmController);
 
+router.put("/planets/:id", putPlanetController);
+
+router.put("/starships/:id");
+
 //rutas DELETE
 router.delete("/films/:id", deleteFilmController);
+
+router.delete("/planets/:id", deletePlanetController);
+
+router.delete("/starships/:id");
 
 module.exports = router;
