@@ -36,7 +36,7 @@ const PlanetsSchema = new Schema(
             required: true,
         },
         population: {
-            type: Number, //ojo hay que cambiarlo a numero
+            type: String,
             required: true,
         },
     },

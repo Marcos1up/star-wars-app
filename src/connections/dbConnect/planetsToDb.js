@@ -27,7 +27,7 @@ async function planetsToDb() {
                         gravity: e.gravity,
                         terrain: e.terrain,
                         surface_water: parseInt(e.surface_water),
-                        population: parseInt(e.population),
+                        population: e.population,
                     });
 
                     return jsonPlanets.save();
