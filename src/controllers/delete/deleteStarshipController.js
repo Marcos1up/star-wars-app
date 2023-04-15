@@ -3,7 +3,7 @@ const {
     removeStarship,
 } = require("../../utilities/removeFunctions/removeStarship");
 
-async function deleteStarshipController(req, res) {
+async function deleteStarshipController(req, res, next) {
     try {
         const starshipId = req.params.id;
         const starship = await removeStarship(starshipId);
@@ -21,7 +21,7 @@ async function deleteStarshipController(req, res) {
         console.error(error.message, error);
         res.status(500).send({
             message:
-                "Ha ocurrido un error inesperado al remover la nave de la base de datos. Verifique que la Id sea correcta",
+                "Ha ocurrido un error inesperado al remover la nave de la base de datos. Por favor, inténtelo de nuevo",
         });
     }
 }

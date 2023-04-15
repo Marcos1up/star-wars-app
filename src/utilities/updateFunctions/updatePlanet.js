@@ -10,30 +10,29 @@ async function updatePlanet(body, idPlanet) {
                 `Error. No se ha encontrado un planeta con el ID: ${idPlanet}, para modificar`
             );
         } else {
+            const updateObj = {};
+
+            if (body.name) updateObj.name = body.name;
+            if (body.rotation_period)
+                updateObj.rotation_period = body.rotation_period;
+            if (body.orbital_period)
+                updateObj.orbital_period = body.orbital_period;
+            if (body.diameter) updateObj.diameter = body.diameter;
+            if (body.climate) updateObj.producer = body.climate;
+            if (body.gravity) updateObj.gravity = body.gravity;
+            if (body.terrain) updateObj.terrain = body.terrain;
+            if (body.surface_water)
+                updateObj.surface_water = body.surface_water;
+            if (body.population) updateObj.population = body.population;
+
             const update = await Planets.updateOne(
                 { _id: idPlanet },
-                //esto puede ser completamente mejorado, pero no me funcionaba quizas podria modularizar este objeto (AYUDAME JEBUS)
+                updateObj,
                 {
-                    name: body.name ? body.name : planet.name,
-                    rotation_period: body.rotation_period
-                        ? body.rotation_period
-                        : planet.rotation_period,
-                    orbital_period: body.orbital_period
-                        ? body.orbital_period
-                        : planet.orbital_period,
-                    diameter: body.diameter ? body.diameter : planet.diameter,
-                    climate: body.climate ? body.climate : planet.climate,
-                    gravity: body.gravity ? body.gravity : planet.gravity,
-                    terrain: body.terrain ? body.terrain : planet.terrain,
-                    surface_water: body.surface_water
-                        ? body.surface_water
-                        : planet.terrain,
-                    population: body.population
-                        ? body.population
-                        : planet.population,
-                },
-                { new: true }
+                    new: true,
+                }
             );
+
             return update;
         }
     } catch (error) {

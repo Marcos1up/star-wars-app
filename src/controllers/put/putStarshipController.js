@@ -3,7 +3,7 @@ const {
     updateStarship,
 } = require("../../utilities/updateFunctions/updateStarship");
 
-async function putStarshipController(req, res) {
+async function putStarshipController(req, res, next) {
     try {
         const idStarship = req.params.id;
         const body = req.body;
@@ -12,7 +12,7 @@ async function putStarshipController(req, res) {
 
         if (updateResult.length === 0) {
             return res.status(404).send({
-                message: "No se encontró la nave a actualizar",
+                message: `No se encontró la nave a actualizar con el Id: ${idStarship}`,
             });
         }
 
@@ -22,7 +22,8 @@ async function putStarshipController(req, res) {
     } catch (error) {
         console.error(error);
         return res.status(500).send({
-            message: "Ha ocurrido un error INESPERADO al actualizar la nave",
+            message:
+                "Ha ocurrido un error INESPERADO al actualizar la nave. Por favor, inténtelo de nuevo",
         });
     }
 }

@@ -3,7 +3,7 @@ const {
     createPlanet,
 } = require("../../utilities/createFunctions/createPlanet");
 
-async function postPlanet(req, res) {
+async function postPlanet(req, res, next) {
     const info = req.body;
     try {
         if (
@@ -26,13 +26,15 @@ async function postPlanet(req, res) {
 
         const result = await createPlanet(info);
 
-        console.log("El planeta fue creada exitosamente!!!");
-
-        res.status(201).send(result);
+        res.status(201).send({
+            message: "El planeta fue creado exitosamente!!!",
+            result,
+        });
     } catch (error) {
         console.error({ message: error.message });
         res.status(500).send({
-            message: "Ha ocurrido un error INESPERADO al crear el planeta",
+            message:
+                "Ha ocurrido un error INESPERADO al crear el planeta. Por favor, inténtelo de nuevo",
         });
     }
 }

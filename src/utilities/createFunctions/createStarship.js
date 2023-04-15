@@ -24,19 +24,7 @@ async function createStarship(data) {
         }
 
         const newStarship = new Starships({
-            name: data.name,
-            model: data.model,
-            manufacturer: data.manufacturer,
-            cost_in_credits: data.cost_in_credits,
-            length: data.length,
-            max_atmosphering_speed: data.max_atmosphering_speed,
-            crew: data.crew,
-            passengers: data.passengers,
-            cargo_capacity: data.cargo_capacity,
-            consumables: data.consumables,
-            hyperdrive_rating: data.hyperdrive_rating,
-            MGLT: data.MGLT,
-            starship_class: data.starship_class,
+            ...data, //creo todos los valores ya validados
         });
 
         const savedStarship = await newStarship.save();

@@ -1,7 +1,7 @@
 const helmet = require("helmet");
 const { allPlanets } = require("../../utilities/readFunctions/allPlanets");
 
-async function getAllPlanets(req, res) {
+async function getAllPlanets(req, res, next) {
     try {
         const allPlanetsDb = await allPlanets();
 
@@ -17,7 +17,7 @@ async function getAllPlanets(req, res) {
         console.error({ message: error.message }, error);
         res.status(500).send({
             message:
-                "Ha ocurrido un error inesperado al obtener TODOS los planetas",
+                "Ha ocurrido un error inesperado al obtener TODOS los planetas. Por favor, inténtelo de nuevo más tarde",
         });
     }
 }

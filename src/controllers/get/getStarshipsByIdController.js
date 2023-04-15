@@ -3,14 +3,14 @@ const {
     findStarshipById,
 } = require("../../utilities/readFunctions/findStarshipsById");
 
-async function getStarshipById(req, res) {
+async function getStarshipById(req, res, next) {
     try {
         const starshipId = req.params.id;
         const starship = await findStarshipById(starshipId);
 
         if (!starship) {
             return res.status(404).send({
-                message: `No se encontró la nave con la id: ${starshipId}. Verifique posibles problemas con la base de datos`,
+                message: `No se encontró la nave con la id: ${starshipId}. Verifique que el Id proporcionado sea válido`,
             });
         }
 
@@ -18,7 +18,8 @@ async function getStarshipById(req, res) {
     } catch (error) {
         console.error(error.message, error);
         res.status(500).send({
-            message: "Ha ocurrido un error INESPERADO al obtener la nave",
+            message:
+                "Ha ocurrido un error INESPERADO al obtener la nave. Por favor, inténtelo de nuevo más tarde",
         });
     }
 }

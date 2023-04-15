@@ -1,7 +1,7 @@
 const helmet = require("helmet");
 const { allStarships } = require("../../utilities/readFunctions/allStarships");
 
-async function getAllStarships(req, res) {
+async function getAllStarships(req, res, next) {
     try {
         const allStarshipsDb = await allStarships();
 
@@ -17,7 +17,7 @@ async function getAllStarships(req, res) {
         console.error({ message: error.message }, error);
         res.status(500).send({
             message:
-                "Ha ocurrido un error inesperado al obtener TODAS las naves",
+                "Ha ocurrido un error inesperado al obtener TODAS las naves. Por favor, inténtelo de nuevo más tarde",
         });
     }
 }

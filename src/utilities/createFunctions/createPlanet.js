@@ -23,15 +23,7 @@ async function createPlanet(data) {
         }
 
         const newPlanet = new Planets({
-            name: data.name,
-            rotation_period: data.rotation_period,
-            orbital_period: data.orbital_period,
-            diameter: data.diameter,
-            climate: data.climate,
-            gravity: data.gravity,
-            terrain: data.terrain,
-            surface_water: data.surface_water,
-            population: data.population,
+            ...data, //creo todos los valores ya validados
         });
 
         const savedPlanet = await newPlanet.save();

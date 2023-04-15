@@ -1,7 +1,7 @@
 const helmet = require("helmet");
 const { createFilm } = require("../../utilities/createFunctions/createFilm");
 
-async function postFilm(req, res) {
+async function postFilm(req, res, next) {
     const info = req.body;
     try {
         if (
@@ -21,13 +21,15 @@ async function postFilm(req, res) {
 
         const result = await createFilm(info);
 
-        console.log("La pelicula fue creada exitosamente!!!");
-
-        res.status(201).send(result);
+        res.status(201).send({
+            message: "La pelicula fue creada exitosamente!!!",
+            result,
+        });
     } catch (error) {
         console.error({ message: error.message });
         res.status(500).send({
-            message: "Ha ocurrido un error INESPERADO al crear la pelicula",
+            message:
+                "Ha ocurrido un error INESPERADO al crear la pelicula. Por favor, inténtelo de nuevo",
         });
     }
 }
