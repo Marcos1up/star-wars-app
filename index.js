@@ -2,6 +2,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const server = require("./app.js");
 const PORT = process.env.PORT || 3800;
+const { swaggerDocs: V1SwaggerDocs } = require("./swagger.js");
 
 const url = process.env.DB_CREDENTIAL;
 
@@ -14,6 +15,7 @@ mongoose
         console.log("¡Conexión a MongoDB exitosa!");
         server.listen(PORT, () => {
             console.log("El servidor está corriendo en: ", PORT);
+            V1SwaggerDocs(server, PORT);
         });
     })
     .catch((error) => {
